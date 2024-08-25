@@ -21,8 +21,13 @@ chrome.runtime.onInstalled.addListener(() => {
 
 async function openSpotSearchManager() {
     if (tabManagerId) {
-        await chrome.tabs.remove(tabManagerId);
-        tabManagerId = undefined;
+        try {
+            await chrome.tabs.remove(tabManagerId);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            tabManagerId = undefined
+        }
     }
 
     const tab = await chrome.tabs.create({url: chrome.runtime.getURL("spot-search-manager.html")});
