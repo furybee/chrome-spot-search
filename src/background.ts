@@ -1,24 +1,32 @@
 
 // let lastShiftPressTime = 0;
 // const shiftThreshold = 300;
+let tabManagerId : number | undefined;
 
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.commands.onCommand.addListener(async (command) => {
-        if (command === 'open-spot-search-manager') {
-            // const currentTime = new Date().getTime();
-            // const timeDifference = currentTime - lastShiftPressTime;
-            //
-            // if (timeDifference < shiftThreshold) {
-                await openSpotSearchManager();
-            // }
-            //
-            // lastShiftPressTime = currentTime;
+    chrome.commands.onCommand.addListener(async (command, tab) => {
+        if (command === 'toggle-spot-search') {
+            if (!tab.url || (tab.url && (tab.url.startsWith('chrome://') || tab.url.startsWith('about')))) {
+                return await openSpotSearchManager();
+            }
+
+            if (!tab.id) return;
+
+            await chrome.tabs.sendMessage(tab.id, {
+                action: 'tabSpot:toggleSpotSearch',
+            });
         }
     });
 });
 
 async function openSpotSearchManager() {
-    await chrome.tabs.create({url: chrome.runtime.getURL("spot-search-manager.html")});
+    if (tabManagerId) {
+        await chrome.tabs.remove(tabManagerId);
+        tabManagerId = undefined;
+    }
+
+    const tab = await chrome.tabs.create({url: chrome.runtime.getURL("spot-search-manager.html")});
+    tabManagerId = tab.id;
 }
 
 chrome.runtime.onMessage.addListener(async (message, sender) => {

@@ -33,12 +33,12 @@
     "https://*/*"
   ],
   "commands": {
-    "open-spot-search-manager": {
+    "toggle-spot-search": {
       "suggested_key": {
-        "default": "Alt+U",
-        "linux": "Alt+U",
-        "mac": "Ctrl+U",
-        "windows": "Alt+U"
+        "default": "Alt+Shift+E",
+        "linux": "Alt+Shift+E",
+        "mac": "Ctrl+Shift+E",
+        "windows": "Alt+Shift+E"
       },
       "description": "Open Spot Search manager"
     }

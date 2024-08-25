@@ -1,4 +1,15 @@
 export const styles = `
+		.ts-overlay {
+			display: none;
+			position: fixed!important;
+			top: 0!important;
+			right: 0!important;
+			bottom: 0!important;
+			left: 0!important;
+			background-color: rgba(0, 0, 0, 0.4)!important;
+			z-index: 99999!important;
+		}
+		
 		.ts-container {
 			display: none;
 			background-color: rgba(42, 48, 60, 0.95)!important;

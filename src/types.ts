@@ -1,3 +1,9 @@
+export enum FoundItemType {
+    TAB = 'tab',
+    GROUP = 'group',
+    BOOKMARK = 'bookmark',
+}
+
 export type TabInterface = {
     id: number;
     title: string;

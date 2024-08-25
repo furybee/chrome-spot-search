@@ -1,4 +1,4 @@
-import {initTabSpot, refreshResults, showSpotSearch} from "./core/main";
+import {initTabSpot, refreshResults, showSpotSearch, toggleSpotSearch} from "./core/main";
 
 initTabSpot().then(() => {
     if (window.location.href.endsWith('spot-search-manager.html')) {
@@ -11,5 +11,8 @@ chrome.runtime.onMessage.addListener(async function (request) {
         await refreshResults({
             tabs: request.tabs, groups: request.groups, bookmarks: request.bookmarks
         });
+    } else if (request.action === 'tabSpot:toggleSpotSearch') {
+        console.log('toggleSpotSearch');
+        await toggleSpotSearch();
     }
 });

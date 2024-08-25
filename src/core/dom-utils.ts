@@ -1,8 +1,9 @@
 import {styles} from "./styles.ts";
-import {BookmarkInterface, TabInterface} from "../types.ts";
+import {BookmarkInterface, FoundItemType, TabInterface} from "../types.ts";
 import {_chromeGroupColor} from "../helpers/chrome-color.ts";
 import {hideSpotSearch} from "./main.ts";
 
+export let overlay: HTMLDivElement;
 export let container: HTMLDivElement;
 export let searchInput: HTMLInputElement;
 export let foundItemListContainer: HTMLDivElement;
@@ -13,6 +14,7 @@ export const changeIndex = (index: number) => {
 };
 
 export const createComponents = () => {
+    createOverlay();
     createContainer();
     createSearchInput();
     createFoundItemListContainer();
@@ -22,6 +24,17 @@ export const createComponents = () => {
 
     document.body.appendChild(container);
     document.head.appendChild(document.createElement('style')).textContent = styles;
+}
+
+const createOverlay = () => {
+    overlay = document.createElement('div');
+    overlay.className = 'ts-overlay';
+
+    overlay.addEventListener('click', () => {
+        hideSpotSearch();
+    });
+
+    document.body.appendChild(overlay);
 }
 
 const createContainer = () => {
@@ -120,13 +133,13 @@ const highlightSelectedItem = (foundItems: HTMLDivElement[]) => {
     }
 };
 
-export const createFoundItem = (foundItem: TabInterface | BookmarkInterface, type: string) => {
+export const createFoundItem = (foundItem: TabInterface | BookmarkInterface, type: FoundItemType) => {
     const foundItemElement = document.createElement('div');
     foundItemElement.className = 'ts-found-item';
 
     const foundItemGroupTitle = document.createElement('span');
 
-    if (type === 'tab' && foundItem.groupTitle) {
+    if (type === FoundItemType.TAB && foundItem.groupTitle) {
         foundItemGroupTitle.textContent = foundItem.groupTitle;
         foundItemGroupTitle.className = 'ts-item-group-title';
         foundItemGroupTitle.style.backgroundColor = _chromeGroupColor(foundItem.groupColor);
@@ -140,7 +153,7 @@ export const createFoundItem = (foundItem: TabInterface | BookmarkInterface, typ
     foundItemUrl.className = 'ts-found-item-url';
     foundItemUrl.textContent = foundItem.url;
 
-    if (type === 'tab' && foundItem.favIconUrl) {
+    if (type === FoundItemType.TAB && foundItem.favIconUrl) {
         const foundItemImg = document.createElement('img');
         foundItemImg.src = foundItem.favIconUrl;
         foundItemImg.className = 'ts-found-item-img';
@@ -150,7 +163,7 @@ export const createFoundItem = (foundItem: TabInterface | BookmarkInterface, typ
         const foundItemImg = document.createElement('div');
         foundItemImg.className = 'ts-found-item-img';
 
-        if (type === 'bookmark') {
+        if (type === FoundItemType.BOOKMARK) {
             foundItemImg.innerHTML =
                 '<svg style="display: block; width: 18px; height: 18px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">' +
                 '  <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />' +
@@ -176,13 +189,13 @@ export const createFoundItem = (foundItem: TabInterface | BookmarkInterface, typ
     foundItemElement.addEventListener('click', async () => {
         hideSpotSearch();
 
-        if (type === 'tab') {
+        if (type === FoundItemType.TAB) {
             await chrome.runtime.sendMessage({
                 action: 'tabSpot:activateTab',
                 tabId: foundItem.id,
                 windowId: foundItem.windowId,
             });
-        } else if (type === 'bookmark') {
+        } else if (type === FoundItemType.BOOKMARK) {
             await chrome.runtime.sendMessage({
                 action: 'tabSpot:openBookmark',
                 bookmarkId: foundItem.id,
