@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "Spot Search"
+  },
+  "extensionDescription": {
+    "message": "Search through your tabs or in your bookmarks."
+  },
+  "searchInputPlaceholder": {
+    "message": "Search tabs, bookmarks..."
+  }
+}

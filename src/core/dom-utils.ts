@@ -35,7 +35,7 @@ const createContainer = () => {
 const createSearchInput = () => {
     searchInput = document.createElement('input');
     searchInput.type = 'search';
-    searchInput.placeholder = 'Search tabs, bookmarks...';
+    searchInput.placeholder = chrome.i18n.getMessage('searchInputPlaceholder');
     searchInput.className = 'ts-search-input';
 
     searchInput.addEventListener('input', () => {

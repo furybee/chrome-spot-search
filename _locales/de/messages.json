@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "Spot Search"
+  },
+  "extensionDescription": {
+    "message": "Durchsuchen Sie Ihre Tabs oder Ihre Lesezeichen."
+  },
+  "searchInputPlaceholder": {
+    "message": "Tabs, Lesezeichen durchsuchen..."
+  }
+}
