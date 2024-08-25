@@ -22,10 +22,15 @@ export type BookmarkInterface = {
     id: number;
     title: string;
     url: string;
+    favIconUrl: string;
+    windowId: number;
+    groupId: number;
+    groupTitle: string;
+    groupColor: string;
 }
 
-export type FoundItemInterface = {
-    id: number;
-    title: string;
-    url: string;
+export type RefreshResultParams = {
+    tabs: TabInterface[];
+    groups: GroupInterface[];
+    bookmarks: BookmarkInterface[];
 }
