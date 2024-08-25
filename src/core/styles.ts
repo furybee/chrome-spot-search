@@ -34,7 +34,7 @@ export const styles = `
 			width: 100%!important;
 			padding: 10px 16px!important;
 			font-family: Arial, sans-serif!important;
-			font-size: 16px!important;
+			font-size: 18px!important;
 			box-sizing: border-box!important;
 			outline: none!important;
 			background-color: transparent!important;
