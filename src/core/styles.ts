@@ -65,6 +65,7 @@ export const styles = `
 			overflow: hidden!important;
 			text-overflow: ellipsis!important;
 			color: #b3ccd6!important;
+			user-select: none!important;
 		}
 		
 		.ts-container .ts-found-item-list-container .ts-found-item .ts-found-item-url {
@@ -76,6 +77,7 @@ export const styles = `
 			color: #b3ccd6!important;
 			opacity: 70%;    
 			padding-top: 2px!important;
+			user-select: none!important;
 		}
 		
 		.ts-container .ts-found-item-list-container .ts-found-item .ts-found-item-img {
@@ -93,5 +95,6 @@ export const styles = `
 			color: black!important;
 			margin-right: 10px!important;
 			border-radius: 5px!important;
+			user-select: none!important;
 		}
 	`;
