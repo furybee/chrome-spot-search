@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build-zip": "rm -rf ./dist && rm -f spot-search.zip && yarn build && cd ./dist && zip -r ../spot-search.zip *",
+    "test": "vitest --run",
+    "watch:test": "vitest",
+    "watch:coverage": "npx vitest --coverage.enabled true",
+    "coverage": "npx vitest --run --coverage.enabled true"
   },
   "dependencies": {
     "vue": "^3.4.37"
