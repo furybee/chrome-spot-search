@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Spot Search",
+  "version": "1.0.0",
+  "description": "Search through your tabs or in your bookmarks.",
+  "homepage_url": "https://github.com/furybee/chrome-spot-search",
+  "icons": {
+    "16": "assets/icon_16.png",
+    "32": "assets/icon_32.png",
+    "48": "assets/icon_48.png",
+    "128": "assets/icon_128.png"
+  },
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  },
+  "content_scripts": [{
+    "matches": [ "*://*/*" ],
+    "js": [
+        "src/content.ts"
+    ],
+    "type": "module",
+    "run_at": "document_start"
+  }],
+  "permissions": [
+    "bookmarks",
+    "tabs",
+    "tabGroups"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "commands": {
+    "open-spot-search-manager": {
+      "suggested_key": {
+        "default": "Alt+U",
+        "linux": "Alt+U",
+        "mac": "Ctrl+U",
+        "windows": "Alt+U"
+      },
+      "description": "Open Spot Search manager"
+    }
+  }
+}
