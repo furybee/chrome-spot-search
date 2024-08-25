@@ -6,9 +6,12 @@
 
 ## Features
 
-* Quick search:
+### Quick search
 - linux: `Alt+Shift+E`
 - mac: `Ctrl+Shift+E`
 - windows: `Alt+Shift+E`
 
 Quick search can be done by pressing the shortcut keys and typing the search query.
+
+<img width="963" alt="image" src="https://github.com/user-attachments/assets/16e43022-71f1-41f5-adb8-3d52bade5228">
+
