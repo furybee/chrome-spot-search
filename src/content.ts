@@ -10,13 +10,15 @@ if (window.location.href.endsWith('spot-search-manager.html')) {
 }
 
 chrome.runtime.onMessage.addListener(async function (request) {
-    if (request.action === 'tabSpot:showResults') {
-        await refreshResults({
-            tabs: request.tabs, groups: request.groups, bookmarks: request.bookmarks
-        });
-    } else if (request.action === 'tabSpot:toggleSpotSearch') {
-        await initTabSpot();
-
-        await toggleSpotSearch();
+    switch (request.action) {
+        case 'tabSpot:showResults':
+            await refreshResults({
+                tabs: request.tabs, groups: request.groups, bookmarks: request.bookmarks
+            });
+            break;
+        case 'tabSpot:toggleSpotSearch':
+            await initTabSpot();
+            await toggleSpotSearch();
+            break;
     }
 });

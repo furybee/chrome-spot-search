@@ -37,7 +37,7 @@ export const refreshResults = async (
 ) => {
     foundItemListContainer.innerHTML = '';
 
-    if (tabs) {
+    if (tabs && container) {
         foundItemListContainer.style.display = 'block';
 
         tabs.forEach((tab) => {
@@ -53,7 +53,7 @@ export const refreshResults = async (
         searchInput.focus();
     }
 
-    if (bookmarks) {
+    if (bookmarks && container) {
         foundItemListContainer.style.display = 'block';
 
         bookmarks.forEach((bookmark) => {
@@ -71,13 +71,17 @@ export const refreshResults = async (
 };
 
 export const showSpotSearch = () => {
-    overlay.style.display = 'block';
+    if (!container) {
+        return;
+    }
+
     container.style.display = 'block';
+    overlay.style.display = 'block';
     searchInput.focus();
 };
 
 export const hideSpotSearch = () => {
-    if (!window.location.href.endsWith('spot-search-manager.html')) {
+    if (!window.location.href.endsWith('spot-search-manager.html') && container) {
         overlay.style.display = 'none';
         container.style.display = 'none';
     }

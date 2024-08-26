@@ -4,7 +4,7 @@ import {_chromeGroupColor} from "../helpers/chrome-color.ts";
 import {hideSpotSearch} from "./main.ts";
 
 export let overlay: HTMLDivElement;
-export let container: HTMLDivElement;
+export let container: HTMLDivElement | undefined;
 export let searchInput: HTMLInputElement;
 export let foundItemListContainer: HTMLDivElement;
 let currentIndex = -1;
@@ -14,16 +14,26 @@ export const changeIndex = (index: number) => {
 };
 
 export const createComponents = () => {
-    createOverlay();
-    createContainer();
-    createSearchInput();
-    createFoundItemListContainer();
+    try {
+        createOverlay();
+        createContainer();
+        createSearchInput();
+        createFoundItemListContainer();
 
-    container.appendChild(searchInput);
-    container.appendChild(foundItemListContainer);
+        if (!container) {
+            throw new Error('Container is not created');
+        }
 
-    document.body.appendChild(container);
-    document.head.appendChild(document.createElement('style')).textContent = styles;
+        container.appendChild(searchInput);
+        container.appendChild(foundItemListContainer);
+
+        document.body.appendChild(container);
+        document.head.appendChild(document.createElement('style')).textContent = styles;
+    } catch (e) {
+        console.error(e);
+        container = undefined;
+    }
+
 }
 
 const createOverlay = () => {
