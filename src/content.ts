@@ -4,9 +4,9 @@ import {bindGlobalKeyEvents} from "./core/events.ts";
 bindGlobalKeyEvents();
 
 if (window.location.href.endsWith('spot-search-manager.html')) {
-    await initTabSpot();
-
-    await toggleSpotSearch();
+    initTabSpot().then(() => {
+        toggleSpotSearch().then(() => {});
+    });
 }
 
 chrome.runtime.onMessage.addListener(async function (request) {
