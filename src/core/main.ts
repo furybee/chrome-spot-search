@@ -11,6 +11,10 @@ import {
 import {bindGlobalKeyEvents} from "./events.ts";
 
 export const initTabSpot = async () => {
+    if (container) {
+        return;
+    }
+
     createComponents();
 
     bindGlobalKeyEvents();

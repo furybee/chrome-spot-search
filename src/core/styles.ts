@@ -43,6 +43,14 @@ export const styles = `
 			outline: none!important;
 			color: #b3ccd6!important;
 			caret-color: #c792e9!important;
+			font-weight: 300!important;
+			font-style: normal!important;
+		}
+		
+		.ts-container input[type=search].ts-search-input::placeholder {
+			font-size: 18px!important;
+			font-weight: 300!important;
+			font-style: normal!important;
 		}
 		
 		.ts-container .ts-found-item-list-container {
@@ -77,6 +85,8 @@ export const styles = `
 			text-overflow: ellipsis!important;
 			color: #b3ccd6!important;
 			user-select: none!important;
+			font-weight: 300!important;
+			font-style: normal!important;
 		}
 		
 		.ts-container .ts-found-item-list-container .ts-found-item .ts-found-item-url {
@@ -89,6 +99,8 @@ export const styles = `
 			opacity: 70%;    
 			padding-top: 2px!important;
 			user-select: none!important;
+			font-weight: 300!important;
+			font-style: normal!important;
 		}
 		
 		.ts-container .ts-found-item-list-container .ts-found-item .ts-found-item-img {
@@ -107,5 +119,7 @@ export const styles = `
 			margin-right: 10px!important;
 			border-radius: 5px!important;
 			user-select: none!important;
+			font-weight: 300!important;
+			font-style: normal!important;
 		}
 	`;

@@ -1,10 +1,13 @@
-import {initTabSpot, refreshResults, showSpotSearch, toggleSpotSearch} from "./core/main";
+import {initTabSpot, refreshResults, toggleSpotSearch} from "./core/main";
+import {bindGlobalKeyEvents} from "./core/events.ts";
 
-initTabSpot().then(() => {
-    if (window.location.href.endsWith('spot-search-manager.html')) {
-        showSpotSearch();
-    }
-});
+bindGlobalKeyEvents();
+
+if (window.location.href.endsWith('spot-search-manager.html')) {
+    await initTabSpot();
+
+    await toggleSpotSearch();
+}
 
 chrome.runtime.onMessage.addListener(async function (request) {
     if (request.action === 'tabSpot:showResults') {
@@ -12,7 +15,8 @@ chrome.runtime.onMessage.addListener(async function (request) {
             tabs: request.tabs, groups: request.groups, bookmarks: request.bookmarks
         });
     } else if (request.action === 'tabSpot:toggleSpotSearch') {
-        console.log('toggleSpotSearch');
+        await initTabSpot();
+
         await toggleSpotSearch();
     }
 });

@@ -1,4 +1,5 @@
 import {hideSpotSearch, toggleSpotSearch} from "./main.ts";
+import {container, createComponents} from "./dom-utils.ts";
 
 export const bindGlobalKeyEvents = () => {
     let lastShiftPressTime = 0;
@@ -10,6 +11,10 @@ export const bindGlobalKeyEvents = () => {
             const timeDifference = currentTime - lastShiftPressTime;
 
             if (timeDifference < shiftThreshold) {
+                if (!container) {
+                    createComponents();
+                }
+
                 await toggleSpotSearch();
             }
 
