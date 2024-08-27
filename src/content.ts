@@ -11,12 +11,12 @@ if (window.location.href.endsWith('spot-search-manager.html')) {
 
 chrome.runtime.onMessage.addListener(async function (request) {
     switch (request.action) {
-        case 'tabSpot:showResults':
+        case 'spotSearch:showResults':
             await refreshResults({
                 tabs: request.tabs, groups: request.groups, bookmarks: request.bookmarks
             });
             break;
-        case 'tabSpot:toggleSpotSearch':
+        case 'spotSearch:toggleSpotSearch':
             await initTabSpot();
             await toggleSpotSearch();
             break;

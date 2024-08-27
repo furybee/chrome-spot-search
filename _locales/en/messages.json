@@ -7,5 +7,8 @@
   },
   "searchInputPlaceholder": {
     "message": "Search tabs, bookmarks..."
+  },
+  "changeShortcut": {
+    "message": "Change Shortcut"
   }
 }

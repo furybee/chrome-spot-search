@@ -13,7 +13,7 @@ chrome.runtime.onInstalled.addListener(() => {
             if (!tab.id) return;
 
             await chrome.tabs.sendMessage(tab.id, {
-                action: 'tabSpot:toggleSpotSearch',
+                action: 'spotSearch:toggleSpotSearch',
             });
         }
     });
@@ -38,7 +38,7 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
     if (!sender.tab) return;
 
     switch (message.action) {
-        case 'tabSpot:refresh':
+        case 'spotSearch:refresh':
             const tabs = await chrome.tabs.query({});
             const groups = await chrome.tabGroups.query({});
 
@@ -97,23 +97,28 @@ chrome.runtime.onMessage.addListener(async (message, sender) => {
 
             if (!sender.tab.id) break;
             await chrome.tabs.sendMessage(sender.tab.id, {
-                action: 'tabSpot:showResults',
+                action: 'spotSearch:showResults',
                 tabs: filteredTabs,
                 groups: filteredGroups,
                 bookmarks: bookmarks,
             });
 
             break;
-        case 'tabSpot:activateTab':
+        case 'spotSearch:activateTab':
             if (message.tabId) {
                 await chrome.tabs.update(message.tabId, { active: true });
                 await chrome.windows.update(message.windowId, { focused: true });
             }
             break;
-        case 'tabSpot:openBookmark':
+        case 'spotSearch:openBookmark':
             if (message.bookmarkId) {
                 await chrome.tabs.create({ url: message.bookmarkUrl });
             }
+            break;
+        case 'spotSearch::openShortcuts':
+            console.log('openShortcuts');
+
+            await chrome.tabs.create({ url: "chrome://extensions/shortcuts" });
             break;
     }
 });

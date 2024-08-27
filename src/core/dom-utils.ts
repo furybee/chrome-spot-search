@@ -71,7 +71,7 @@ const createSearchInput = () => {
 
         setTimeout(async () => {
             await chrome.runtime.sendMessage({
-                action: 'tabSpot:refresh',
+                action: 'spotSearch:refresh',
                 title: searchInput.value.trim().toLowerCase(),
             });
         });
@@ -201,13 +201,13 @@ export const createFoundItem = (foundItem: TabInterface | BookmarkInterface, typ
 
         if (type === FoundItemType.TAB) {
             await chrome.runtime.sendMessage({
-                action: 'tabSpot:activateTab',
+                action: 'spotSearch:activateTab',
                 tabId: foundItem.id,
                 windowId: foundItem.windowId,
             });
         } else if (type === FoundItemType.BOOKMARK) {
             await chrome.runtime.sendMessage({
-                action: 'tabSpot:openBookmark',
+                action: 'spotSearch:openBookmark',
                 bookmarkId: foundItem.id,
                 bookmarkUrl: foundItem.url,
             });
