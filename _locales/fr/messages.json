@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "Spot Search"
+  },
+  "extensionDescription": {
+    "message": "Recherchez parmi vos onglets ou dans vos favoris."
+  },
+  "searchInputPlaceholder": {
+    "message": "Rechercher dans les onglets, favoris..."
+  },
+  "changeShortcut": {
+    "message": "Changer le raccourci"
+  }
+}
