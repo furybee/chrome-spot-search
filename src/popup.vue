@@ -18,7 +18,7 @@
     justify-content: center;
     align-items: center;
     height: 100px;
-    padding: 0 20px;
+    padding: 0 10px;
   }
 
   button {
@@ -26,13 +26,12 @@
     border: none;
     color: #091307;
     font-weight: semibold;
-    padding: 8px 16px;
+    padding: 4px 8px;
     border-radius: 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
     cursor: pointer;
     white-space: nowrap;
     transition: background-color 0.3s;
