@@ -31,7 +31,7 @@
         "src/content.ts"
     ],
     "type": "module",
-    "run_at": "document_start"
+    "run_at": "document_idle"
   }],
   "permissions": [
     "bookmarks",

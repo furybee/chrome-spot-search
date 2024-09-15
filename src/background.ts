@@ -1,6 +1,3 @@
-
-// let lastShiftPressTime = 0;
-// const shiftThreshold = 300;
 let tabManagerId : number | undefined;
 
 chrome.runtime.onInstalled.addListener(() => {

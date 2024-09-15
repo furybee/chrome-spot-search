@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vite build && yarn fix-csp",
     "preview": "vite preview",
     "build-zip": "rm -rf ./dist && rm -f spot-search.zip && yarn build && cd ./dist && zip -r ../spot-search.zip *",
     "test": "vitest --run",
     "watch:test": "vitest",
+    "fix-csp": "node fix-csp.js",
     "watch:coverage": "npx vitest --coverage.enabled true",
     "coverage": "npx vitest --run --coverage.enabled true"
   },
@@ -33,11 +34,13 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^9.26.0",
+    "jsdom": "^25.0.0",
     "prettier": "^3.3.3",
     "typescript": "^5.5.3",
     "vite": "^5.4.1",
     "vite-plugin-restart": "^0.4.1",
     "vite-plugin-static-copy": "^1.0.6",
+    "vitest": "^2.0.5",
     "vue-eslint-parser": "^9.4.2",
     "vue-tsc": "^2.0.29"
   }
