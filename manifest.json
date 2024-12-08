@@ -1,0 +1,56 @@
+{
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "homepage_url": "https://github.com/furybee/chrome-spot-search",
+  "default_locale": "en",
+  "action": {
+    "default_title": "__MSG_extensionName__",
+    "default_popup": "src/index.html",
+    "default_icon": {
+      "16": "assets/icon_16.png",
+      "32": "assets/icon_32.png",
+      "48": "assets/icon_48.png",
+      "128": "assets/icon_128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon_16.png",
+    "32": "assets/icon_32.png",
+    "48": "assets/icon_48.png",
+    "128": "assets/icon_128.png"
+  },
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  },
+  "content_scripts": [{
+    "matches": [ "*://*/*" ],
+    "js": [
+        "src/content.ts"
+    ],
+    "type": "module",
+    "run_at": "document_idle"
+  }],
+  "permissions": [
+    "bookmarks",
+    "tabs",
+    "tabGroups"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "commands": {
+    "toggle-spot-search": {
+      "suggested_key": {
+        "default": "Alt+Shift+E",
+        "linux": "Alt+Shift+E",
+        "mac": "Ctrl+Shift+E",
+        "windows": "Alt+Shift+E"
+      },
+      "description": "Open Spot Search manager"
+    }
+  }
+}

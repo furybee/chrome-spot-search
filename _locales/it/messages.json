@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "Spot Search"
+  },
+  "extensionDescription": {
+    "message": "Cerca tra le tue schede o nei tuoi segnalibri."
+  },
+  "searchInputPlaceholder": {
+    "message": "Cerca schede, segnalibri..."
+  },
+  "changeShortcut": {
+    "message": "Cambia scorciatoia"
+  }
+}

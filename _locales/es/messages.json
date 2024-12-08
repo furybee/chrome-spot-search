@@ -1,0 +1,14 @@
+{
+  "extensionName": {
+    "message": "Spot Search"
+  },
+  "extensionDescription": {
+    "message": "Busca entre tus pestañas o en tus marcadores."
+  },
+  "searchInputPlaceholder": {
+    "message": "Buscar pestañas, marcadores..."
+  },
+  "changeShortcut": {
+    "message": "Cambiar atajo"
+  }
+}

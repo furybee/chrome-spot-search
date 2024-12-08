@@ -1,0 +1,47 @@
+{
+  "name": "chrome-spot-search",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && yarn fix-csp",
+    "preview": "vite preview",
+    "build-zip": "rm -rf ./dist && rm -f spot-search.zip && yarn build && cd ./dist && zip -r ../spot-search.zip *",
+    "test": "vitest --run",
+    "watch:test": "vitest",
+    "fix-csp": "node fix-csp.js",
+    "watch:coverage": "npx vitest --coverage.enabled true",
+    "coverage": "npx vitest --run --coverage.enabled true"
+  },
+  "dependencies": {
+    "vue": "^3.4.37"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.0-beta.25",
+    "@types/chrome": "^0.0.268",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "@vitejs/plugin-vue": "^5.1.2",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^9.26.0",
+    "jsdom": "^25.0.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1",
+    "vite-plugin-restart": "^0.4.1",
+    "vite-plugin-static-copy": "^1.0.6",
+    "vitest": "^2.0.5",
+    "vue-eslint-parser": "^9.4.2",
+    "vue-tsc": "^2.0.29"
+  }
+}
